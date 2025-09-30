@@ -65,13 +65,70 @@ This here allows me to get litter_number at the beginning as the first variable 
 select(litters_df, litter_number, everything())
 ```
 
+Relocate allows to move chosen column to the front, no need to put everything afterwards
+
+```{r}
+relocate(litters_df, litter_number)
+```
+
+Select does a lot of things that we can do. Rename/Relocate/Select -- all very useful when processing data.
 
 
+Select kept everything but reduced or removed or reorganized columns. 
+
+##`FILTER` NOW -- keeps rows needed for analysis
+
+Complicated a little bit, we need to give it condition TRUE or FALSE, if TRUE then rows are kept, FALSE not kept. 
+
+Here, I am specifically looking at the first day that the mother was pregnant and I want to look at weight that is lower then 22, so the condition is the '22'. Keeps other columns, but select rows for the observation that is true. 
+
+```{r}
+filter(litters_df, gd0_weight < 22)
+```
+
+Here, greater or equal than 22. 
+
+```{r}
+filter(litters_df, gd0_weight >= 22)
+```
 
 
+Logical operators for FILTERS. 
 
 
+two ewual signs are test for equalitym so if the weight equal 20
+
+```{r}
+filter(litters_df, gd_of_birth == 20)
+```
 
 
+Everything that is NOT 20 -- exclamation on the outside of logical operation. 
 
+```{r}
+filter(litters_df, !(gd_of_birth == 20))
+```
+
+We can also do it this way:
+```{r}
+filter(litters_df, gd_of_birth != 20)
+```
+
+Here, I want to look for two things that are true: 
+```{r}
+filter(litters_df, gd0_weight >= 22, gd_of_birth == 20)
+```
+
+Here looking for something that is not numerical. 
+```{r}
+filter(litters_df, group == "Con7")
+```
+
+Two things that are not numerical. Two rows that are Con7 or Mod8, the way to find these two is to do %in% and connect them both by ()
+
+```{r}
+filter(litters_df, group %in% c("Con7", "Mod8"))
+```
+
+We need to understand the logical structure but also knowing what it is that i want to keep. 
 
