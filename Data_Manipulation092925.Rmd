@@ -1,0 +1,17 @@
+---
+title: "Data_Manipulation_Workingon092925"
+output: github_document
+date: "2025-09-30"
+---
+
+
+```{r}
+library(tidyverse)
+```
+
+## Load the FAS litters data
+
+```{r}
+litters_df = read.csv("./data/FAS_litters.csv")
+litters_df = janitor::clean_names(litters_df)
+```
