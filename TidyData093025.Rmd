@@ -46,9 +46,30 @@ pulse_data =
   mutate(visit = recode(visit, "bl" = "00m"))
 ```
 
+Pivot longer works when we have column names and it contains information that is variables and i need to go from wide format to long format.
+
+## `pivot_wider`
+
+Make up some data!
+
+```{r}
+analysis_result = 
+  tibble(
+    group = c("treatment", "treatment", "placebo", "placebo"),
+    time = c("pre", "post", "pre", "post"),
+    mean = c(4, 8, 3.5, 4)
+  )
+
+analysis_result %>% 
+  pivot_wider(
+    names_from = "time",
+    values_from = "mean"
+  )
+
+```
 
 
-
+  
 
 
 
