@@ -149,6 +149,13 @@ mutate(
 ```
 
 
+## ARRANGE 
+
+goal: putting things in order
+
+```{r}
+arrange(litters_df, pups_born_alive)
+```
 
 
 
