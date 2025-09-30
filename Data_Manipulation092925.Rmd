@@ -15,3 +15,63 @@ library(tidyverse)
 litters_df = read.csv("./data/FAS_litters.csv")
 litters_df = janitor::clean_names(litters_df)
 ```
+
+
+## `select`
+
+Choose some columns and not others 
+
+```{r}
+select(litters_df, group, gd0_weight)
+```
+
+## Specifying the range of columns that I want to take a look at, we use colon :
+
+```{r}
+select(litters_df, group, gd0_weight:gd_of_birth)
+```
+
+## specifying what we want to get rid of, use minus sign
+
+```{r}
+select(litters_df, -litter_number )
+```
+
+
+Renaming columns
+
+```{r}
+select(litters_df, GROUP = group, LITTER_NUMBER = litter_number)
+```
+
+Another way of renaming - we can keep all the columns and then only change the name of selected ones by using rename(litters_df)
+
+```{r}
+rename(litters_df, GROUP = group, LITTER_NUMBER = litter_number)
+```
+
+
+HELPER FUNCTIONS - used to help accomplish but never use them on their own - select helpers 
+
+Select helpers, columns that i know i want to keep: if i know the key phrases that exist in the beginning, end or middle of the variables then i can find them and select them
+
+```{r}
+select(litters_df, starts_with("gd"))
+```
+
+This here allows me to get litter_number at the beginning as the first variable and then everything else comes after - this is to be used when i know what column i want first
+
+```{r}
+select(litters_df, litter_number, everything())
+```
+
+
+
+
+
+
+
+
+
+
+
