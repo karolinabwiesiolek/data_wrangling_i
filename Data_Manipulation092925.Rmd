@@ -132,3 +132,23 @@ filter(litters_df, group %in% c("Con7", "Mod8"))
 
 We need to understand the logical structure but also knowing what it is that i want to keep. 
 
+
+## MUTATE - for modifying or creating new variables 
+
+Here making a variable of gd0_weight
+```{r}
+mutate(litters_df, wt_gain = gd0_weight + gd18_weight)
+```
+
+
+```{r}
+mutate(
+  litters_df, 
+  wt_gain = gd18_weight - gd0_weight,
+  group = str_to_lower(group))
+```
+
+
+
+
+
